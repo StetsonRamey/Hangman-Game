@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Stetson's Hangman Game</title>
+  </head>
+  <body>
+
+    <div id="game">
+
+      <!--  don't need to change anything here -->
+      <h1>Press any key to get started!</h1>
+
+      <!-- Need to print how many wins there are -->
+      <p id="wins">Wins</p>
+
+
+      <!-- Need to
+      1. determine number of letters in current Word
+      2. print underscores for each letter
+      3. replace correct letters as they are guessed -->
+      <p>Current Word</p><br>
+
+      <p><span id="one">__</span> <span id="two">__</span> <span id="three">__</span> <span id="four">__</span> <span id="five">__</span></p>
+
+      <br><br>
+
+
+      <!-- give them 15 guesses to start, and count down after each guess -->
+      <p id="guesses">Number of Guesses Remaining: 15</p>
+
+
+      <!-- display the letters already guessed and don't let them be used again -->
+      <p>Letters already guessed</p>
+      <div id="used-letters"></div>
+
+
+    </div>
+
+
+    <script>
+
+      //VARIABLES
+      //=========================================================
+
+      // objects for our word
+      var word1 = {
+        l1: "w",
+        l2: "o",
+        l3: "r",
+        l4: "d",
+        l5: "1"
+      };
+      // set the score to 0 to start
+      var score = 0;
+      // set the number of Guesses
+      var guesses = 15;
+      // variable to hold the index of the letters guessed
+      var letterIndex = 0;
+      // set an empty array to hold guessed letters
+      var guessedLetters = [];
+
+      //MAIN LOGIC
+      //=========================================================
+
+      // When the user presses a key, it will run the following function...
+      document.onkeyup = function(event) {
+
+        console.log(word1.l1);
+        console.log(letterIndex);
+        console.log(guesses);
+
+
+        debugger;
+
+        // update the number of guesses
+        guesses = guesses -1;
+        document.querySelector("#guesses").innerHTML = "Number Guesses Remaining " + guesses;
+
+        // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
+        var userInput = String.fromCharCode(event.which).toLowerCase();
+
+        // check to see if user already guessed that letter, stop if they have
+
+        //check index of for this
+        // if (guessedLetters.indexOf(userInput) !== -1) {
+        //
+        // }
+        for (var i = 0; i < guessedLetters.length; i++) {
+          if (guessedLetters[i] === userInput) {
+            return;
+          }
+        }
+
+        // check to see if the userInput matches a letter
+        if (userInput === word1.l1) {
+
+          document.querySelector("#one").innerHTML = userInput;
+          letterIndex++;
+
+        } else if (userInput === word1.l2) {
+
+          var targetClass = document.getElementById("two");
+          targetClass.innerHTML = userInput;
+          letterIndex++;
+
+        } else if (userInput === word1.l3) {
+
+          var targetClass = document.getElementById("three");
+          targetClass.innerHTML = userInput;
+          letterIndex++;
+
+        } else if (userInput === word1.l4) {
+
+          var targetClass = document.getElementById("four");
+          targetClass.innerHTML = userInput;
+          letterIndex++;
+
+        } else if (userInput === word1.l5) {
+
+          var targetClass = document.getElementById("five");
+          targetClass.innerHTML = userInput;
+          letterIndex++;
+
+        } else {
+          // if it is not one of the letter, push the guess into the guessed array
+          guessedLetters.push(userInput);
+          console.log(guessedLetters);
+
+        }
+
+        // If user guessed all letters update score, stop the game
+        if (letterIndex === 5) {
+          score++;
+          document.querySelector("#wins").innerHTML = "Wins " + score;
+          return;
+        }
+
+      }
+
+
+
+
+
+
+
+
+    </script>
+
+  </body>
+</html>
