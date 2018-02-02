@@ -24,8 +24,11 @@ var guessedLetters = [];
 // When the user presses a key, it will run the following function...
 document.onkeyup = function(event) {
 
-  //if we're out of guesses, end the Game
+  //if we're out of guesses, or we've won, end the Game
   if (guesses === 0) {
+    return;
+  }
+  if (letterIndex === 5) {
     return;
   }
 
@@ -56,26 +59,22 @@ document.onkeyup = function(event) {
 
   } else if (userInput === word1.l2) {
 
-    var targetClass = document.getElementById("two");
-    targetClass.innerHTML = userInput;
+    document.querySelector("#two").innerHTML = userInput;
     letterIndex++;
 
   } else if (userInput === word1.l3) {
 
-    var targetClass = document.getElementById("three");
-    targetClass.innerHTML = userInput;
+    document.querySelector("#three").innerHTML = userInput;
     letterIndex++;
 
   } else if (userInput === word1.l4) {
 
-    var targetClass = document.getElementById("four");
-    targetClass.innerHTML = userInput;
+    document.querySelector("#four").innerHTML = userInput;
     letterIndex++;
 
   } else if (userInput === word1.l5) {
 
-    var targetClass = document.getElementById("five");
-    targetClass.innerHTML = userInput;
+    document.querySelector("#five").innerHTML = userInput;
     letterIndex++;
 
   } else {
@@ -85,6 +84,7 @@ document.onkeyup = function(event) {
   }
 
   // If user guessed all letters update score, stop the game
+  // ==================================================== UPDATES FOR MORE WINS FIX
   if (letterIndex === 5) {
     score++;
     document.querySelector("#wins").innerHTML = "Wins " + score;
@@ -92,7 +92,7 @@ document.onkeyup = function(event) {
   }
 
   // push already guessed letters to user
-  // ================================================================ HOW DO I GET THESE TO DISPLAY UPPERCASE?
+  // ==================================================== HOW DO I GET THESE TO DISPLAY UPPERCASE?
   document.querySelector("#used-letters").innerHTML = "<p>" + guessedLetters + "</p>";
 
 }
