@@ -1,1 +1,18 @@
-adsfadsf
+body {
+  background: black;
+}
+h1, p {
+  color: white;
+}
+h1 {
+  font-size: 60px;
+}
+p {
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
