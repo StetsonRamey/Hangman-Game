@@ -3,11 +3,11 @@
 
 // objects for our word
 var word1 = {
-  l1: "w",
+  l1: "c",
   l2: "o",
-  l3: "r",
-  l4: "d",
-  l5: "1"
+  l3: "d",
+  l4: "e",
+  l5: "r"
 };
 // set the score to 0 to start
 var score = 0;
@@ -32,8 +32,6 @@ document.onkeyup = function(event) {
   // update the number of guesses
   guesses = guesses -1;
   document.querySelector("#guesses").innerHTML = "Number Guesses Remaining " + guesses;
-
-
 
   // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
   var userInput = String.fromCharCode(event.which).toLowerCase();
