@@ -18,13 +18,24 @@ var letterIndex = 0;
 // set an empty array to hold guessed letters
 var guessedLetters = [];
 
+//TRY SOME FUNCTIONS
+//=========================================================
+// function outOfGuesses() {
+//   if (guesses === 0) {
+//     return;
+//   }
+// }
+// this didn't work, not sure why
+
 //MAIN LOGIC
 //=========================================================
 
 // When the user presses a key, it will run the following function...
 document.onkeyup = function(event) {
-
   //if we're out of guesses, or we've won, end the Game
+  // outOfGuesses(); ----- this function call not Working
+
+  
   if (guesses === 0) {
     return;
   }
